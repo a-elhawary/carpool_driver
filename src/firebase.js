@@ -19,9 +19,19 @@ const auth = getAuth(app);
 
 export async function SignUp(email, password) {
   try{
-    let userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user;
-    return user;
+    return await createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => userCredential.user)
+    .catch((error) => error.message);
+  }catch(exception){
+    return exception.message;
+  }
+}
+
+export async function LogIn(email, password) {
+  try{
+    return await signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => userCredential.user)
+    .catch((error) => error.message);
   }catch(exception){
     return exception.message;
   }
