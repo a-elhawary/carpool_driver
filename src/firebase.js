@@ -17,22 +17,33 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-export async function SignUp(email, password) {
+async function handleAuth(func, email, password){
   try{
-    return await createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => userCredential.user)
+    return await func(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      localStorage.setItem("carpool_driver_uid", user.uid);
+      return user;
+    })
     .catch((error) => error.message);
   }catch(exception){
     return exception.message;
   }
 }
 
+export async function SignUp(email, password) {
+  return await handleAuth(createUserWithEmailAndPassword, email, password);
+}
+
 export async function LogIn(email, password) {
-  try{
-    return await signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => userCredential.user)
-    .catch((error) => error.message);
-  }catch(exception){
-    return exception.message;
-  }
+  return await handleAuth(signInWithEmailAndPassword, email, password);
+}
+
+export function LogOut(){
+  localStorage.removeItem("carpool_driver_uid");
+}
+
+export function getUID(){
+  const uid = localStorage.getItem("carpool_driver_uid");
+  return uid;
 }

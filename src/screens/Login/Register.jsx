@@ -32,9 +32,7 @@ export default function Register(){
         if(typeof user == "string"){
             setError(user);
         }else{
-            // TODO: Save user to local storage for later use
-            console.log(user);
-            navigate("/route_history");
+            navigate("/history");
         }
     }
 

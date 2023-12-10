@@ -22,9 +22,7 @@ export default function Login(){
         if(typeof user == "string"){
             setError("Invalid Username or Password");
         }else{
-            // TODO: Save user to local storage for later use
-            console.log(user);
-            navigate("/route_history");
+            navigate("/history");
         }
     }
 
