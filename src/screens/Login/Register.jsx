@@ -34,7 +34,7 @@ export default function Register(){
         }else{
             // TODO: Save user to local storage for later use
             console.log(user);
-            navigate("/home");
+            navigate("/route_history");
         }
     }
 
