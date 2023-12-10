@@ -48,6 +48,7 @@
     box-sizing: border-box;
     margin-bottom:1rem;
     padding:5px 10px;
+    width:100%;
 }
 
 .login-button{
@@ -58,4 +59,9 @@
     border:none;
     padding: 1em;
     border-radius: 4px;
+}
+
+.login-nav-btn{
+    text-decoration: none;
+    color: #247ce1;
 }
