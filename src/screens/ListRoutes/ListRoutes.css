@@ -1,0 +1,33 @@
+.routes{
+    width:100%;
+    background-color:#eee;
+    border-radius: 10px;
+    border-collapse:collapse;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+}
+
+.heading th{
+    text-align: left;
+    padding:10px;
+    border:none;
+    margin:0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.route{
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.route td{
+    padding:10px;
+}
+
+.accepting{
+    color: #456e49;
+    background-color: #a9cfad;
+    padding:5px;
+    border-radius: 5px;
+}
+

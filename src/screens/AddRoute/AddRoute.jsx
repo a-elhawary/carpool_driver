@@ -65,7 +65,8 @@ export default function AddRoute(props){
             price: price,
             address: address,
             driver: getUID(),
-            availableSeats: 4
+            availableSeats: 4,
+            status: "accepting"
         });
         navigate("/history");
     }
