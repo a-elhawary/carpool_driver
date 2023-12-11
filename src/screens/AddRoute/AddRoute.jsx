@@ -75,8 +75,8 @@ export default function AddRoute(props){
         <APIProvider apiKey={process.env.REACT_APP_API_KEY}>
             <Layout>
                 <h1 className="mb-1">Create Route</h1>
-                <div className="add row">
-                    <div className="add-location card">
+                <div className="add row card">
+                    <div className="add-location">
                         <h2 className="primary">1. Choose The Pickup/Dropoff Point</h2>
                         <div style={{height: "50vh"}}>
                             <Map center={position} zoom={10} onClick={onMapClick}>
@@ -84,7 +84,7 @@ export default function AddRoute(props){
                             </Map>
                         </div>
                     </div>
-                    <div className="add-route-info column card">
+                    <div className="add-route-info column">
                         <div>
                             <h2 className="primary">2. Fill in the Route Info</h2>
                             <span style={{color: "red"}}>{error}</span>
