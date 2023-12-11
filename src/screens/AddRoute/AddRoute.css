@@ -1,0 +1,25 @@
+.add{
+    justify-content: center;
+}
+
+.add-item{
+    margin: 10px 0;
+}
+
+.add-label{
+    font-weight: 300;
+}
+
+.add-label::after{
+    content: ":  "
+}
+
+.add-route-info{
+    margin: 0 2rem;
+    justify-content: space-between;
+}
+
+.add-location{
+    margin: 0 2rem;
+    flex-grow:1;
+}

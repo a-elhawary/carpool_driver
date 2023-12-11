@@ -49,7 +49,7 @@ export default function Register(){
                     <input className="login-input" type="password" onChange={(e) => setPass(e.target.value)}/>
                     <div className="login-label">Confirm Password</div>
                     <input className="login-input" type="password" onChange={(e) => setConfirmPass(e.target.value)}/>
-                    <button className="login-button" onClick={handleRegister}>Sign Up</button>
+                    <button className="button" onClick={handleRegister}>Sign Up</button>
                     <Link className="login-nav-btn" to="/login">Or Log in</Link>
                 </div>
             </div>

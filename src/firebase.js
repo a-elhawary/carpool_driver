@@ -1,6 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword} from "firebase/auth";
+import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore/lite';
+
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -16,6 +18,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
+
+// AUTH FUNCTIONS START
 
 async function handleAuth(func, email, password){
   try{
@@ -47,3 +52,14 @@ export function getUID(){
   const uid = localStorage.getItem("carpool_driver_uid");
   return uid;
 }
+
+// AUTH FUNCTIONS END
+
+// FIRESTORE FUNCTIONS START
+
+export function addRoute(routeInfo){
+  const routesCol = collection(db, "routes");
+  return addDoc(routesCol, routeInfo);
+}
+
+// FIRESTORE FUNCTIONS END

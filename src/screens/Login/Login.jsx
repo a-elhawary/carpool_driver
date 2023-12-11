@@ -37,7 +37,7 @@ export default function Login(){
                     <input className="login-input" type="text" onChange={(e) => setEmail(e.target.value)}/>
                     <div className="login-label">Password</div>
                     <input className="login-input" type="password" onChange={(e) => setPass(e.target.value)}/>
-                    <button className="login-button" onClick={handleLogin}>Login</button>
+                    <button className="button" onClick={handleLogin}>Login</button>
                     <Link className="login-nav-btn" to="/register">Or Sign Up</Link>
                 </div>
             </div>
