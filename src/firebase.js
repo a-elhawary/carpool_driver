@@ -65,7 +65,7 @@ export async function addRoute(routeInfo){
 
 export async function getRoutes(){
   const routesCol = collection(db, "routes");
-  const q = query(routesCol, where("driver", "==", getUID(), orderBy("date", "desc"), orderBy("startTime", "desc")));
+  const q = query(routesCol, where("driver", "==", getUID()), orderBy("date", "desc"));
   const routesSnapshot = await getDocs(q);
   const routesList = routesSnapshot.docs.map((route) => {return {id: route.id, data: route.data()};} );
   return routesList;

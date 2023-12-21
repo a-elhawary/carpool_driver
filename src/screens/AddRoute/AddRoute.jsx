@@ -1,16 +1,13 @@
 import Layout from "../../components/Layout/Layout";
 import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
 import { useState } from "react";
-import {isBlank} from "../../helpers";
+import {isBlank, getDateString} from "../../helpers";
 import "./AddRoute.css";
 import { addRoute, getUID } from "../../firebase";
 import { useNavigate } from "react-router";
 import firebase from 'firebase/app';
 
 export default function AddRoute(props){
-    function getDateString(date){
-        return date.getFullYear()+"-" + (date.getMonth() + 1) + "-"+date.getDate()
-    }
 
     const navigate = useNavigate();
     const today = getDateString(new Date());

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Layout from "../../components/Layout/Layout";
 import { getRoutes } from "../../firebase";
+import {getDateString} from "../../helpers";
 import "./ListRoutes.css"
 
 function Loading(){
@@ -15,6 +16,8 @@ export default function ListRoutes(){
             (routes) => setRoutes(routes)
         );
     }, []);
+
+    console.log(routes);
 
     return(
         <Layout>
@@ -34,7 +37,7 @@ export default function ListRoutes(){
                 </thead>
                 <tbody>
                     {routes.map((route, index) => <tr key={index} className="route">
-                        <td></td>
+                        <td>{getDateString(new Date(route.data.date.seconds * 1000))}</td>
                         <td>{route.data.startTime}</td>
                         <td>{route.data.from == "Choosen Point" ? route.data.address : route.data.from}</td>
                         <td>{route.data.to == "Choosen Point" ? route.data.address : route.data.to}</td>
