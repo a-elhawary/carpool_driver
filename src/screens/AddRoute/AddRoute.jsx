@@ -5,6 +5,7 @@ import {isBlank} from "../../helpers";
 import "./AddRoute.css";
 import { addRoute, getUID } from "../../firebase";
 import { useNavigate } from "react-router";
+import firebase from 'firebase/app';
 
 export default function AddRoute(props){
     function getDateString(date){

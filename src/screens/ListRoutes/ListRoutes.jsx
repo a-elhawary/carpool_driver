@@ -21,24 +21,28 @@ export default function ListRoutes(){
             <h1>Your Routes</h1>
             {routes == null ? <Loading /> : 
             <table className="routes">
-                <tr className="heading">
-                    <th>Date</th>
-                    <th>Start Time</th>
-                    <th>From</th>
-                    <th>To</th>
-                    <th>Price</th>
-                    <th>Available Seats</th>
-                    <th>Status</th>
-                </tr>
-            {routes.map((route) => <tr className="route">
-                <td>{route.data.date}</td>
-                <td>{route.data.startTime}</td>
-                <td>{route.data.from == "Choosen Point" ? route.data.address : route.data.from}</td>
-                <td>{route.data.to == "Choosen Point" ? route.data.address : route.data.to}</td>
-                <td>{route.data.price}</td>
-                <td>{route.data.availableSeats}</td>
-                <td><span className={route.data.status}>{route.data.status}</span></td>
-            </tr>)}
+                <thead>
+                    <tr className="heading">
+                        <th>Date</th>
+                        <th>Start Time</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Price</th>
+                        <th>Available Seats</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {routes.map((route, index) => <tr key={index} className="route">
+                        <td></td>
+                        <td>{route.data.startTime}</td>
+                        <td>{route.data.from == "Choosen Point" ? route.data.address : route.data.from}</td>
+                        <td>{route.data.to == "Choosen Point" ? route.data.address : route.data.to}</td>
+                        <td>{route.data.price}</td>
+                        <td>{route.data.availableSeats}</td>
+                        <td><span className={route.data.status}>{route.data.status}</span></td>
+                    </tr>)}
+                </tbody>
             </table>
             }
         </Layout>

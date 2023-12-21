@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword} from "firebase/auth";
-import { getFirestore, collection, query, where, getDocs, addDoc, orderBy } from 'firebase/firestore/lite';
+import { getFirestore, collection, query, where, getDocs, addDoc, orderBy, Timestamp} from 'firebase/firestore/lite';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -58,6 +58,7 @@ export function getUID(){
 // FIRESTORE FUNCTIONS START
 
 export async function addRoute(routeInfo){
+  routeInfo.date = Timestamp.fromDate(new Date(routeInfo.date));
   const routesCol = collection(db, "routes");
   return await addDoc(routesCol, routeInfo);
 }
