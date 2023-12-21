@@ -53,7 +53,7 @@ export default function AddRoute(props){
         const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${marker.position.lat},${marker.position.lng}&sensor=false&key=${process.env.REACT_APP_API_KEY}`);
         const data = await response.json();
         const address = data.results[0].formatted_address;
-        addRoute({
+        await addRoute({
             date: date,
             startTime: time,
             from: from,
