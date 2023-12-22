@@ -28,7 +28,7 @@ export default function Register(){
             return;
         }
         setError("");
-        const user = await SignUp(email, pass);
+        const user = await SignUp("driver_" + email, pass);
         if(typeof user == "string"){
             setError(user);
         }else{

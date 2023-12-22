@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword} from "firebase/auth";
-import { getFirestore, collection, query, where, getDocs, addDoc, orderBy, Timestamp} from 'firebase/firestore/lite';
+import { doc, updateDoc, getFirestore, collection, query, where, getDocs, addDoc, orderBy, Timestamp, onSnapshot} from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -69,6 +69,22 @@ export async function getRoutes(){
   const routesSnapshot = await getDocs(q);
   const routesList = routesSnapshot.docs.map((route) => {return {id: route.id, data: route.data()};} );
   return routesList;
+}
+
+export function listenForRequests(callback){
+  const requestsCol = collection(db, "requests");
+  const q = query(requestsCol, where("driver", "==", getUID()), where("status", "==", "pending"));
+  return onSnapshot(q, (snapshot) => {
+    const requests = snapshot.docs.map((request) => {return {id: request.id, data: request.data()}});
+    callback(requests);
+  });
+}
+
+export async function changeRequestStatus(request_id, status){
+  const requestsCol = collection(db, "requests");
+  const docRef = doc(requestsCol, request_id);
+  await updateDoc(docRef, {status: status});
+  return true;
 }
 
 // FIRESTORE FUNCTIONS END

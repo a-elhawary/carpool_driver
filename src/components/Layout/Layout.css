@@ -1,3 +1,33 @@
 .content{
     margin: 0 2rem;
 }
+
+.request{
+    padding: 1rem;
+}
+
+.request-content{
+    background-color:#fff;
+    border-top:5px solid #1992c7;
+    padding:0.5rem;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.request-actions{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.request-accept{
+    background-color: #00c08a;
+    margin-right:1rem;
+}
+
+.request-reject{
+    background-color: #a83246;
+    margin-right:1rem;
+}
