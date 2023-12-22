@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword} from "firebase/auth";
-import { doc, updateDoc, getFirestore, collection, query, where, getDocs, addDoc, orderBy, Timestamp, onSnapshot} from 'firebase/firestore';
+import { doc, updateDoc, getFirestore, collection, query, where, getDocs, addDoc, orderBy, Timestamp, onSnapshot, getDoc} from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -81,9 +81,21 @@ export function listenForRequests(callback){
 }
 
 export async function changeRequestStatus(request_id, status){
+  // update the request
   const requestsCol = collection(db, "requests");
   const docRef = doc(requestsCol, request_id);
   await updateDoc(docRef, {status: status});
+
+  // get the ride
+  const request = await getDoc(docRef);
+  const requestData = request.data();
+  const routesCol = collection(db, "routes");
+  const routeRef = await doc(routesCol, requestData.ride);
+
+  // update the ride availableSeats
+  const route = await getDoc(routeRef);
+  const routeData = route.data();
+  await updateDoc(routeRef, {availableSeats: routeData.availableSeats - 1});
   return true;
 }
 

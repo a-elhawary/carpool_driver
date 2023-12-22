@@ -21,6 +21,7 @@ export default function AddRoute(props){
     const [to, setTo] = useState("Gate 3");
     const [price, setPrice] = useState(20);
     const [error, setError] = useState("");
+    const [availableSeats, setAvailableSeats] = useState("4");
 
 
     function onMapClick(e){
@@ -63,7 +64,7 @@ export default function AddRoute(props){
             price: price,
             address: address,
             driver: getUID(),
-            availableSeats: 4,
+            availableSeats: Number(availableSeats),
             status: "accepting"
         });
         navigate("/history");
@@ -99,6 +100,15 @@ export default function AddRoute(props){
                                 <select value={time} onChange={(e) => changeTime(e.target.value)}>
                                     <option value="7:30 AM">7:30 AM</option>
                                     <option value="5:00 PM">5:00 PM</option>
+                                </select>
+                            </div>
+                            <div className="add-item">
+                                <label className="add-label primary">Available Seats</label>
+                                <select value={availableSeats} onChange={(e) => setAvailableSeats(e.target.value)}>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
                                 </select>
                             </div>
                             <div className="add-item">
