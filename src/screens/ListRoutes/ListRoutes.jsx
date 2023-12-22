@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Layout from "../../components/Layout/Layout";
-import { getRoutes } from "../../firebase";
+import { changeRouteStatus, getRoutes } from "../../firebase";
 import {getDateString} from "../../helpers";
 import "./ListRoutes.css"
 
@@ -10,12 +10,13 @@ function Loading(){
 
 export default function ListRoutes(){
     const [routes, setRoutes] = useState(null);
+    const [refresh, setRefesh] = useState(true);
 
     useEffect(()=>{
         getRoutes().then(
             (routes) => setRoutes(routes)
         );
-    }, []);
+    }, [refresh]);
 
     console.log(routes);
 
@@ -43,7 +44,14 @@ export default function ListRoutes(){
                         <td>{route.data.to == "Choosen Point" ? route.data.address : route.data.to}</td>
                         <td>{route.data.price}</td>
                         <td>{route.data.availableSeats}</td>
-                        <td><span className={route.data.status}>{route.data.status}</span></td>
+                        <td>
+                            <select className={route.data.status} value={route.data.status} onChange={async (e) => {await changeRouteStatus(route.id, e.target.value); setRefesh(!refresh);}}>
+                                <option value="accepting">Accepting</option>
+                                <option value="pending">Pending</option>
+                                <option value="running">Running</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </td>
                     </tr>)}
                 </tbody>
             </table>

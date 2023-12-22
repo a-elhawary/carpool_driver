@@ -24,10 +24,28 @@
     padding:10px;
 }
 
-.accepting{
-    color: #456e49;
-    background-color: #a9cfad;
+.accepting,
+.pending,
+.running,
+.completed{
+    color:#fff;
     padding:5px;
     border-radius: 5px;
+}
+
+.accepting{
+    background-color: #456e49;
+}
+
+.pending{
+    background-color: #6e454a;
+}
+
+.running{
+    background-color: #6a456e;
+}
+
+.completed{
+    background-color: #45496e;
 }
 

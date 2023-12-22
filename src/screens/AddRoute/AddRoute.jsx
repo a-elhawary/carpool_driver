@@ -19,7 +19,7 @@ export default function AddRoute(props){
     const [time, setTime] = useState("7:30 AM");
     const [from, setFrom] = useState("Choosen Point");
     const [to, setTo] = useState("Gate 3");
-    const [price, setPrice] = useState(20);
+    const [price, setPrice] = useState("20");
     const [error, setError] = useState("");
     const [availableSeats, setAvailableSeats] = useState("4");
 
@@ -61,7 +61,7 @@ export default function AddRoute(props){
             to: to,
             lat: marker.position.lat,
             lng: marker.position.lng,
-            price: price,
+            price: Number(price),
             address: address,
             driver: getUID(),
             availableSeats: Number(availableSeats),

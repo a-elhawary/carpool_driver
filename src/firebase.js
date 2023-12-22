@@ -71,6 +71,12 @@ export async function getRoutes(){
   return routesList;
 }
 
+export async function changeRouteStatus(route_id, status){
+  const routesCol = collection(db, "routes");
+  const docRef = doc(routesCol, route_id);
+  await updateDoc(docRef, {status: status});
+}
+
 export function listenForRequests(callback){
   const requestsCol = collection(db, "requests");
   const q = query(requestsCol, where("driver", "==", getUID()), where("status", "==", "pending"));
