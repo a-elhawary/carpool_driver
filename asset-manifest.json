@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/carpool_driver/static/css/main.c6b86341.css",
+    "main.js": "/carpool_driver/static/js/main.a5dd394d.js",
+    "static/media/logo.png": "/carpool_driver/static/media/logo.ee472daa663effc895c6.png",
+    "index.html": "/carpool_driver/index.html",
+    "main.c6b86341.css.map": "/carpool_driver/static/css/main.c6b86341.css.map",
+    "main.a5dd394d.js.map": "/carpool_driver/static/js/main.a5dd394d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c6b86341.css",
+    "static/js/main.a5dd394d.js"
+  ]
+}
